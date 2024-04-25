@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en-us">
+	<head>
+		<title>Login/Register - User Profile</title>
+	</head>
+	<body>
+		<header>
+			<nav>
+				<img src="images/AskItNowLogo.png" alt="Ask-It-Now Logo.">
+				<a href="index.html">AskItNow</a>
+			</nav>
+			<input type="text" placeholder="Search questions...">
+			<nav>
+				<a href="auth.html">Login</a>
+				<img src="https://www.gravatar.com/avatar/placeholder?s=50&d=robohash" alt="Place holder for the user avatar.">
+			</nav>
+		</header>	
+		<main>
+			<section>
+				<h2>Login</h2>
+				<form>
+					<div>
+						<label for="email-log">Email</label>
+						<input type="email" name="email" id="email-log">
+					</div>
+					<div>
+						<label for="password-log">Password</label>
+						<input type="password" name="password" id="password-log">
+					</div>
+					<input type="submit" value="Login">
+					<button type="button" onclick="location.href='#register'">OR register if you don't have an account</button>
+				</form>
+			</section>
+			<section>
+				<h2 id="register">Register</h2>
+				<form>
+					<div>
+						<label for="email-reg">Email</label>
+						<input type="email" name="email" id="email-reg">
+					</div>
+					<div>
+						<label for="password-reg">Password</label>
+						<input type="password" name="password" id="password-reg">
+					</div>
+					<div>
+						<label for="fullname">Full Name</label>
+						<input type="text" name="fullname" id="fullname">
+					</div>
+					<div>
+						<label for="bio">Bio</label>
+						<textarea name="bio" id="bio" rows="3" cols="18"></textarea>
+					</div>
+					<div>
+						<label for="avatar">Avatar Image</label>
+						<input type="file" name="avatar" id="avatar">
+					</div>
+					<input type="submit" value="Create Profile">
+				</form>
+			</section>
+		</main>
+		<footer>
+			<p>&copy; 2024 Ask It Now Q&A Platform - All rights reserved.</p>
+		</footer>
+	</body>
+</html>
