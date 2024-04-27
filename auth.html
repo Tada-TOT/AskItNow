@@ -3,8 +3,9 @@
 	<head>
 		<title>Login/Register - User Profile</title>
 		<link href="style/style.css" rel="stylesheet" type="text/css" >
+		<script defer src="./js/forntendJS.js"></script>
 	</head>
-	<body>
+	<body onload="checkUserLogin()">
 		<header>
 			<div class="contentContainer">
 				<nav>
@@ -22,7 +23,7 @@
 			<div class="contentContainer">
 				<section id="login-sec">
 					<h2>Login</h2>
-					<form>
+					<form onsubmit="validateLoginForm(event)">
 						<div>
 							<label for="email-log">Email</label>
 							<input type="email" name="email" id="email-log">
@@ -33,28 +34,28 @@
 						</div>
 						<div>
 							<input type="submit" value="Login">
-							<button type="button" onclick="location.href='#register'">OR register if you don't have an account</button>
+							<button type="button" onclick="toggleForms()">OR register if you don't have an account</button>
 						</div>
 					</form>
 				</section>
-				<section id="reg-sec">
+				<section id="reg-sec" hidden>
 					<h2 id="register">Register</h2>
-					<form>
+					<form onsubmit="validateRegisterForm(event)">
 						<div>
 							<label for="email-reg">Email</label>
-							<input type="email" name="email" id="email-reg">
+							<input type="email" name="email" id="email-reg" required>
 						</div>
 						<div>
 							<label for="password-reg">Password</label>
-							<input type="password" name="password" id="password-reg">
+							<input type="password" name="password" id="password-reg" required>
 						</div>
 						<div>
 							<label for="fullname">Full Name</label>
-							<input type="text" name="fullname" id="fullname">
+							<input type="text" name="fullname" id="fullname" required>
 						</div>
 						<div>
 							<label for="bio">Bio</label>
-							<textarea name="bio" id="bio" rows="3" cols="18"></textarea>
+							<textarea name="bio" id="bio" rows="3" cols="18" required></textarea>
 						</div>
 						<div>
 							<label for="avatar">Avatar Image</label>

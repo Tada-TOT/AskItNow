@@ -126,6 +126,12 @@ h2 {
     padding-bottom: 20px;
 }
 
+#allAns > article > .lefted {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
 #allAns p {
     margin: 0.50rem;
     margin-left: 0px;
@@ -269,6 +275,10 @@ textarea {
     justify-content: flex-start;
     align-items: stretch;
     margin: 0px 60px 20px 60px;
+}
+
+[hidden] {
+    display:none !important;
 }
 
 #login-sec form,

@@ -1,0 +1,97 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "password": "$2a$10$O0KNgo6bfwiRTk3eIolfku9FDV40.YNohPGmWUJpSQzMnBjqYtGqK",
+      "fullName": "Ali Ahmed",
+      "email": "ahmed@example.com",
+      "bio": "Software Developer with a passion for Java",
+      "avatarUrl": "https://example.com/avatar/john_doe.jpg"
+    },
+    {
+      "id": 2,
+      "password": "$2a$10$O0KNgo6bfwiRTk3eIolfku9FDV40.YNohPGmWUJpSQzMnBjqYtGqK",
+      "fullName": "Omar ALi",
+      "email": "jane.smith@example.com",
+      "bio": "Python enthusiast and data science beginner",
+      "avatarUrl": "https://example.com/avatar/jane_smith.jpg"
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "title": "How do I solve a NullPointerException in Java?",
+      "description": "I'm getting a NullPointerException when trying to access a variable. How can I solve this?",
+      "tags": [
+        "java",
+        "exception"
+      ],
+      "createdAt": "2024-01-11T00:00:00.000Z",
+      "answers": [
+        {
+          "id": 1,
+          "text": "You need to check if the variable is null before accessing it.",
+          "addedAt": "2024-01-12T00:00:00.000Z",
+          "userId": 1,
+          "votes": 5,
+          "accepted": true
+        },
+        {
+          "id": 2,
+          "text": "Make sure to initialize the variable before using it.",
+          "userId": 2,
+          "addedAt": "2024-01-11T00:00:00.000Z",
+          "votes": 3,
+          "accepted": false
+        }
+      ],
+      "answered": true,
+      "author": {
+        "id": 1,
+        "username": "Ali Ahmed"
+      }
+    },
+    {
+      "id": 2,
+      "title": "How to convert a string to lowercase in Python?",
+      "description": "I have a string and I want to convert it to lowercase. What's the best way to do this in Python?",
+      "tags": [
+        "python",
+        "string"
+      ],
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "answers": [
+        {
+          "id": 3,
+          "text": "You can use the `lower()` method to convert a string to lowercase in Python.",
+          "userId": 3,
+          "votes": 2,
+          "addedAt": "2024-01-02T00:00:00.000Z",
+          "accepted": true
+        }
+      ],
+      "answered": true,
+      "author": {
+        "id": 2,
+        "username": "Omar ALi "
+      }
+    },
+    {
+      "title": "How to send a post request using fetch",
+      "description": "Can someone explain how to send a post request to a server that accepts json using fetch api",
+      "tags": [
+        "javascript",
+        " fetch",
+        " async"
+      ],
+      "author": {
+        "id": 3,
+        "username": "SWE 363 Student"
+      },
+      "createdAt": "2024-01-25T06:06:00.557Z",
+      "answered": false,
+      "answers": [],
+      "id": 3
+    }
+  ]
+}
