@@ -8,5 +8,5 @@ jobs:
       - run: npm --version
       - uses: actions/checkout@v4
       - run: npm install
-      - run: json-server-auth ./backend/db.json
+      - run: echo "json-server-auth ./backend/db.json"
       - run: node main.js
