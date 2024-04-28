@@ -18,7 +18,7 @@ jobs:
       - run: npm --version
       - uses: actions/checkout@v4
       - run: npm install
-      - run: echo "json-server-auth ./backend/db.json"
+      - run: "json-server-auth ./backend/db.json"
   deploy:
     environment:
       name: github-pages
