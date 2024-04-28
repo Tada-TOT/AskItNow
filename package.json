@@ -2,6 +2,7 @@
     "name": "Flower-Store",
     "description": "The Assignments for [Web Engineering & Development] course SWE363 at KFUPM",
     "private": true,
+    "type": "module",
     "version": "0.3.1",
     "main": "main.js",
     "scripts": {

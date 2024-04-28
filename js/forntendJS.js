@@ -53,7 +53,7 @@ function showQuestions(qsList) {
 					<span>${qs.answers.length} Answers</span>
 				</div>
 				<div>
-					<h2><a href="question.html">${qs.title}</a></h2>
+					<h2><a href="./html/question.html">${qs.title}</a></h2>
 					<p>${qs.description}</p>
 					${tags}
 				</div>
@@ -133,7 +133,7 @@ async function validateLoginForm(event) {
 		const [response, status] = await fetchHelper("http://localhost:3000/login", "POST", payload);
 		if ((status >= 200) && (status < 400)) {
 			localStorage.setItem("user", JSON.stringify(response.user));
-			window.location.assign("index.html");
+			window.location.assign("../index.html");
 		} else {
 			alert("Email or Password isn't Correct.");
 		}
@@ -163,7 +163,7 @@ async function validateRegisterForm(event) {
 		const [response, status] = await fetchHelper("http://localhost:3000/register", "POST", payload);
 		if ((status >= 200) && (status < 400)) {
 			localStorage.setItem("user", JSON.stringify(response.user));
-			window.location.assign("index.html");
+			window.location.assign("../index.html");
 		} else {
 			alert("Email is already registered.");
 		}
@@ -176,7 +176,7 @@ function checkUserLogin() {
 	const userInfo = localStorage.getItem("user");
 	if ((userInfo != undefined) && (userInfo != "")) {
 		console.log(userInfo);
-		window.location.assign("index.html");
+		window.location.assign("../index.html");
 	}
 }
 
