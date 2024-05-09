@@ -3,7 +3,7 @@
     "description": "The Assignments for [Web Engineering & Development] course SWE363 at KFUPM",
     "private": true,
     "type": "commonjs",
-    "version": "0.3.1",
+    "version": "0.4.1",
     "main": "main.js",
     "repository": {
         "type": "git",
@@ -11,17 +11,24 @@
     },
     "homepage": "https://tada-tot.github.io/Flower-Store",
     "scripts": {
-      "build": "", 
-      "predeploy": "npm run build",
-      "deploy": "gh-pages -d build", 
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "dev": "node main.js",
-      "_comment": "gh-pages cannot be used because I'm using vanila JS."
+        "build": "", 
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build", 
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "nodemon server.js",
+        "_comment": "gh-pages cannot be used because I'm using vanila JS."
     },
     "devDependencies": {
-        "express": "^4.19.2",
         "gh-pages": "^6.1.1",
         "json-server": "^0.17.4",
-        "json-server-auth": "^2.1.0"
+        "json-server-auth": "^2.1.0",
+        "nodemon": "^3.1.0"
+    },
+    "dependencies": {
+        "bcrypt": "^5.1.1",
+        "cors": "^2.8.5",
+        "express": "^4.19.2",
+        "mongoose": "^8.3.4",
+        "nunjucks": "^3.2.4"
     }
 }

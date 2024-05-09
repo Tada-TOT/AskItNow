@@ -1,26 +1,5 @@
-<!doctype html>
-<html lang="en-us">
-	<head>
-		<title>Login/Register - User Profile</title>
-		<link href="../style/style.css" rel="stylesheet" type="text/css" >
-		<script defer src="../js/forntendJS.js"></script>
-	</head>
-	<body onload="checkUserLogin()">
-		<header>
-			<div class="contentContainer">
-				<nav>
-					<img src="../images/AskItNowLogo.png" alt="Ask-It-Now Logo">
-					<a class="webname" href="../index.html">AskItNow</a>
-				</nav>
-				<input id="search-bar" type="text" placeholder="Search questions...">
-				<nav>
-					<a id="login-link" href="./auth.html">Login</a>
-					<img src="https://www.gravatar.com/avatar/placeholder?s=50&d=robohash" alt="Place holder for the user avatar.">
-				</nav>
-			</div>
-		</header>	
-		<main id="auth-page">
-			<div class="contentContainer">
+{% extends "layout.njk" %}
+	{% block content %}
 				<section id="login-sec">
 					<h2>Login</h2>
 					<form onsubmit="validateLoginForm(event)">
@@ -66,12 +45,4 @@
 						</div>
 					</form>
 				</section>
-			</div>
-		</main>
-		<footer>
-			<div class="contentContainer">
-				<p>&copy; 2024 <span class="webname">Ask It Now</span> Q&A Platform - All rights reserved.</p>
-			</div>
-		</footer>
-	</body>
-</html>
+	{% endblock %}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en-us">
+	<head>
+		<title>{{ Title }}</title>
+		<link href="/style.css" rel="stylesheet" type="text/css">
+		<script defer src="/forntendJS.js"></script>
+        {% block scripts %}
+        {% endblock %}
+	</head>
+	<body {% if index %} onload="getQuestions()" {% endif %}>
+		<header>
+			<div class="contentContainer">
+				<nav>
+					<img src="/images/AskItNowLogo.png" alt="Ask-It-Now Logo">
+					<a class="webname" href="/">AskItNow</a>
+				</nav>
+				<input id="search-bar" type="text" placeholder="Search questions...">
+				<nav>
+					<a id="login-link" href="/html/auth.html">Login</a>
+					<img src="https://www.gravatar.com/avatar/placeholder?s=50&d=robohash" alt="Place holder for the user avatar.">
+				</nav>
+			</div>
+		</header>	
+		<main id="index-page">
+			<div class="contentContainer">
+                {% block content %}
+                {% endblock %}
+
+                <!--I DO NOT have aside block in my implementation, i uses grid to divied the children inside parent constainer-->
+                {% block aside %}
+                {% endblock %}
+			</div>
+		</main>
+		<footer>
+			<div class="contentContainer">
+				<p>&copy; 2024 <span class="webname">Ask It Now</span> Q&A Platform - All rights reserved.</p>
+			</div>
+		</footer>
+	</body>
+</html>

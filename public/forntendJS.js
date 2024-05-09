@@ -23,7 +23,7 @@ function openNewQuestionDialog() {
 };
 
 async function getQuestions() {
-	[questions, status] = await fetchHelper("http://localhost:3000/questions?_sort=-createdAt", "GET", "");
+	[questions, status] = await fetchHelper("http://localhost:3000/question", "GET", "");
 	showQuestions(questions);
 };
 
@@ -45,7 +45,7 @@ function showQuestions(qsList) {
 		});
 
 		const ques =
-			`<article id="${qs.id}">
+			`<article id="${qs._id}">
 			<div class="lefted">
 				<div class="upvote">
 					<span class="accepted" ${answered}>✔</span>
@@ -53,7 +53,7 @@ function showQuestions(qsList) {
 					<span>${qs.answers.length} Answers</span>
 				</div>
 				<div>
-					<h2><a href="./html/question.html">${qs.title}</a></h2>
+					<h2><a href="/question/${qs._id}">${qs.title}</a></h2>
 					<p>${qs.description}</p>
 					${tags}
 				</div>
@@ -133,7 +133,7 @@ async function validateLoginForm(event) {
 		const [response, status] = await fetchHelper("http://localhost:3000/login", "POST", payload);
 		if ((status >= 200) && (status < 400)) {
 			localStorage.setItem("user", JSON.stringify(response.user));
-			window.location.assign("../index.html");
+			window.location.href("/");
 		} else {
 			alert("Email or Password isn't Correct.");
 		}
@@ -163,7 +163,7 @@ async function validateRegisterForm(event) {
 		const [response, status] = await fetchHelper("http://localhost:3000/register", "POST", payload);
 		if ((status >= 200) && (status < 400)) {
 			localStorage.setItem("user", JSON.stringify(response.user));
-			window.location.assign("../index.html");
+			window.location.href("/");
 		} else {
 			alert("Email is already registered.");
 		}
@@ -176,7 +176,7 @@ function checkUserLogin() {
 	const userInfo = localStorage.getItem("user");
 	if ((userInfo != undefined) && (userInfo != "")) {
 		console.log(userInfo);
-		window.location.assign("../index.html");
+		window.location.href("/");
 	}
 }
 
@@ -190,7 +190,7 @@ async function validateNewQuestionForm(event) {
 	var id, username;
 
 	const user = JSON.parse(localStorage.getItem("user"));
-	if (user) {
+	if ((user != null) && (user != "")) {
 		id = user.id;
 		username = user.fullName;
 	} else {
@@ -211,14 +211,56 @@ async function validateNewQuestionForm(event) {
 				"username": username
 			}
 		});
-		const [response, status] = await fetchHelper("http://localhost:3000/questions", "POST", payload);
-		if ((status >= 200) && (status < 400) && (response != undefined)) {
-			window.location.assign("index.html");
+		const [response, status] = await fetchHelper("http://localhost:3000/question", "POST", payload);
+		if ((status >= 200) && (status < 400)) {
+			window.location.reload();
 		} else {
 			alert("Somthing went wrong, try again.");
 		}
 	} else {
 		alert("Please Fill All Fields Correctly to Post the Question.");
+	}
+};
+
+async function validateNewAnswerForm(event) {
+	event.preventDefault();
+
+	const answer = document.getElementById("answer").value.trim();
+	const creatAt = new Date();
+	var username;
+
+	const user = JSON.parse(localStorage.getItem("user"));
+	if (user) {
+		username = user.fullName;
+	} else {
+		username = "Anonymous";
+	}
+
+	if ((answer != "")) {
+		const payload = JSON.stringify({
+			"text": answer,
+			"addedAt": creatAt,
+			"answeredBy": username,
+		});
+		const [response, status] = await fetchHelper(window.location.href, "POST", payload);
+		if ((status >= 200) && (status < 400)) {
+			window.location.reload();
+		} else {
+			alert("Somthing went wrong, try again.");
+		}
+	} else {
+		alert("Please Fill All Fields Correctly to Post the Answer.");
+	}
+};
+
+async function updateAnswerForm(event, url) {
+	event.preventDefault();
+
+	const [response, status] = await fetchHelper(url, "GET", "");
+	if ((status >= 200) && (status < 400)) {
+		window.location.reload();
+	} else {
+		alert("Somthing went wrong, try again.");
 	}
 };
 

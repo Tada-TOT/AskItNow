@@ -1,14 +1,12 @@
-const jsonServer = require("json-server");
-const auth = require("json-server-auth");
+const mongoose = require("mongoose");
 
-const api = jsonServer.create();
-const router = jsonServer.router("./backend/db.json");
-const PORT = 3000;
+const connectDBLocal = async () => {
+    try {
+        mongoose.set('strictQuery', false);
+        await mongoose.connect("mongodb://localhost:27017/s202039980");
+    } catch (err) {
+        console.error(err);
+    }
+};
 
-api.db = router.db;
-
-api.use(auth);
-api.use(router);
-api.listen(PORT, () => {
-    console.log(`Express server running at http://127.0.0.1:${PORT}/`);
-});
+module.exports = {connectDBLocal};

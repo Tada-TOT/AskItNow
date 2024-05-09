@@ -1,0 +1,71 @@
+{% extends "layout.njk" %}
+	{% block content %}
+				<section id="qs">
+					<span>Asked At: <time datetime="{{ question.createdAt }}">{{ question.createdAt.toISOString().substring(0, 10) }}</time></span>
+					<div>
+						<h2>{{ question.title }}</h2>
+						<p>{{ question.description }}</p>
+						<div class="ans-det">
+							<div>
+                                {% for tag in question.tags %}
+                                    <a class="tag"  href="/">{{ tag }}</a>
+                                {% endfor %}
+							</div>
+							<span>{{ question.author.username }}</span>
+						</div>
+					</div>
+				</section>
+				<section id="ans">
+					<h2>Answers</h2>
+                    {% if question.answers.length %}
+                        {% for answer in answers %}
+                            <article>
+                                <div class="vote">
+                                    <form onsubmit="updateAnswerForm(event, '/answer/{{ answer._id }}?method=upvote&questionId={{ question._id }}')">
+                                        <button type="submit">👍</button>
+                                    </form>
+                                    <br>
+                                    <span>{{ answer.votes }}</span>
+                                    <br>
+                                    <form  onsubmit="updateAnswerForm(event, '/answer/{{ answer._id }}?method=downvote&questionId={{ question._id }}')">
+                                        <button type="submit">👎</button>
+                                    </form>
+                                    {% if question.answered %}
+                                    {% else %}
+                                        <form  onsubmit="updateAnswerForm(event, '/answer/{{ answer._id }}?method=accept&questionId={{ question._id }}')">
+                                            <button type="submit">Accept</button>
+                                        </form>
+                                    {% endif %}
+                                    <br>
+                                    {% if answer.accepted %}
+                                        <span class="accepted">✔</span>
+                                    {% endif %}
+                                </div>
+                                <div class="answer">
+                                    <p>{{ answer.text }}</p>
+                                    <div class="ans-det">
+                                        <span>Answered on: <time datetime="{{ answer.addedAt }}">{{ answer.addedAt.toISOString().substring(0, 10) }}</time></span>
+                                        <span>Answered by: {{ answer.answeredBy }}</span>
+                                    </div>
+                                </div>
+                            </article>
+                        {% endfor %}
+                    {% else %}
+                        No answers yet.
+                    {% endif %}
+				</section>
+				<section id="yrAns">
+					<h2>Your Answer</h2>
+					<form onsubmit="validateNewAnswerForm(event)">
+							<textarea name="answer" id="answer" rows="4" cols="20"></textarea>
+						<input type="submit" value="Post Your Answer">
+					</form>
+				</section>
+				<section id="relQs">
+					<h2>Related Questions</h2>
+					<ul>
+						<li><a href="question.html">How do I solve a NullPointerException in Java?</a></li>
+						<li><a href="question.html">How to sort an array in Java?</a></li>
+					</ul>
+				</section>
+	{% endblock %}
