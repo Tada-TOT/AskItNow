@@ -22,7 +22,7 @@ router.get("/:id", async (req,res) => {
     const answers = (question.answers.length > 0) ? await answerController.getAnswers(question.answers) : [];
     if (!question) res.status(404).json({error: `Question with id ${req.params.id} is not found!`})    
     res.render("question", {
-        Title: "",
+        Title:  `${question.title} - AskItNow`,
         index: false,
         question: question,
         answers: answers
